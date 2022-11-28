@@ -3,6 +3,7 @@ from random import randrange
 
 
 def create_board(blank):
+    """Takes in an integer blank, and returns a sudoku board with that number of blanks"""
     board = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
              [0, 0, 0, 0, 0, 0, 0, 0, 0],
              [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -12,9 +13,9 @@ def create_board(blank):
              [0, 0, 0, 0, 0, 0, 0, 0, 0],
              [0, 0, 0, 0, 0, 0, 0, 0, 0],
              [0, 0, 0, 0, 0, 0, 0, 0, 0]]
-    i = 0
-    for i in [0, 3, 6]:
 
+    # fill the big squares in a diagonal with numbers
+    for i in [0, 3, 6]:
         numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
         col = i
@@ -25,10 +26,12 @@ def create_board(blank):
                 row += 1
             col += 1
 
+    # Fill the rest with the board using the solve function
     solve(board)
 
     blanks = 0
 
+    # make random cells blank
     while blanks < blank:
         x = randrange(0, 9)
         y = randrange(0, 9)

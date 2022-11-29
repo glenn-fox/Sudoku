@@ -1,9 +1,15 @@
+"""
+Glenn Fox
+
+This file contains the function to generate sudoku boards
+"""
+
 from solve import possible, is_valid, draw_board, fast_solve, solve
 from random import randrange
 
 
 def create_board(blank):
-    """Takes in an integer blank, and returns a sudoku board with that number of blanks"""
+    """Takes in an integer blank, and returns a sudoku board with that number of blank cells"""
     board = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
              [0, 0, 0, 0, 0, 0, 0, 0, 0],
              [0, 0, 0, 0, 0, 0, 0, 0, 0],

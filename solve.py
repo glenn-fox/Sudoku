@@ -1,7 +1,12 @@
-from operator import itemgetter
+"""
+Glenn Fox
+
+This file stores functions to solve sudoku boards
+"""
 
 
 def draw_board(board):
+    """Function draws a sudoku board to the console"""
     for i, line in enumerate(board):
         for j, item in enumerate(line):
             print(item, end=" ")
@@ -21,10 +26,7 @@ def possible(board, pos, num):
     pos (tuple): position on the board (y, x)
     num (int): number to be tested
 
-    Returns:
-    bool:Returning value
-
-
+    Returns bool
     """
     # pos is (y, x)
     y = pos[0]
@@ -52,9 +54,7 @@ def possible(board, pos, num):
 
 
 def is_valid(board):
-    """Return bool
-
-    Checks board for duplicate numbers in rows, columns, and squares"""
+    """Function checks if board is valid by checking board for duplicate numbers in rows, columns, and squares"""
 
     # check horizontal lines
     for line in board:
@@ -99,9 +99,7 @@ def is_valid(board):
 
 
 def completed(board):
-    """Return a bool
-
-    Checks if a Sudoku board is completed or not"""
+    """Function checks if board is valid and there are no blank cells"""
 
     # make sure the board is valid
     if is_valid(board):
@@ -116,6 +114,7 @@ def completed(board):
 
 
 def solve(board):
+    """Simple solving algorithm that starts with first blank cell"""
     for i in list(range(0, 9)):
         for j in list(range(0, 9)):
             if board[i][j] == 0:
@@ -132,6 +131,7 @@ def solve(board):
 
 
 def fast_solve(board, moves=[]):
+    """Solve algorithm that starts with cell with the least number of possible moves"""
     # check if board is complete
     complete = completed(board)
 
@@ -170,5 +170,6 @@ def fast_solve(board, moves=[]):
 
 
 def inner_length(move):
+    """Function that returns the length of the second list in a list of lists"""
     return len(move[1])
 

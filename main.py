@@ -1,3 +1,10 @@
+"""
+Glenn Fox
+
+This file contains what is run, and compares two solving algorithms
+"""
+
+
 from solve import solve, draw_board, fast_solve
 from timeit import default_timer as timer
 from copy import deepcopy

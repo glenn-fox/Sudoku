@@ -38,8 +38,6 @@ for i in range(num_test_boards):
     boards.append(create_board(81-clues))
     progress_bar(len(boards), num_test_boards, string="Creating Boards:")
 
-print("Boards created!")
-
 # make a copy of the boards so multiple algorithms can be tested with the same boards
 boards_copy = deepcopy(boards)
 
@@ -48,14 +46,13 @@ times = []
 boards_solved = 0
 
 # my first solving algorithm start
-print("Regular solving started...")
 for board in boards:
     start = timer()  # this is a test
     solved = solve(board)
     end = timer()
 
     boards_solved += 1
-    progress_bar(boards_solved, num_test_boards)
+    progress_bar(boards_solved, num_test_boards, string="Regular Progress:")
     times.append(end-start)
 
 average = sum(times) / len(times)
@@ -64,14 +61,16 @@ print("Regular solve average: " + str(average))
 times = []
 boards_solved = 0
 
-print("Fast solving started...")
 for board in boards_copy:
+    # start timer
     start = timer()
+    # solve the board
     solved = fast_solve(board)
+    # end timer
     end = timer()
 
     boards_solved += 1
-    progress_bar(boards_solved, num_test_boards)
+    progress_bar(boards_solved, num_test_boards, string="Fast Solve Progress:")
     times.append(end-start)
 
 average = sum(times) / len(times)
